@@ -27,9 +27,8 @@ app.component('pokemon-list',
         }
     },
     mounted() {
-        let that = this
-        this.fetchList().then(function(data) {
-            that.pokemonArray = data.results
+        this.fetchList().then((data) => {
+            this.pokemonArray = data.results
         })
         window.onscroll = function(e) {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
