@@ -3,6 +3,11 @@ body {
     margin: 0;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
 nav {
     background: linear-gradient(-90deg, #84cf6a, #2A9D8F);
     height: 60px;
@@ -33,4 +38,19 @@ nav {
  
 .cardheader *{
     margin: 0;
+}
+
+.popup {
+    width: 90%;
+    height: 90%;
+    background-color: white;
+    
+
+    z-index: 20;
+    position: fixed;
+    align-self: center;
+
+    /*justify self isn't sufficient in that case*/
+    top: 5%;
+    bottom: 5%;
 }
