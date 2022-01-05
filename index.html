@@ -5,6 +5,10 @@
     <title>POKEDO</title>
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
+    <!--Import Google fonts-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+
     <!-- Import Vue.js -->
     <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
   </head>
@@ -14,19 +18,10 @@
         <h1>POKEDO</h1>
       </nav>
 
-      <pokemon-list></pokemon-list>
+      <pokemon-list @details-to-app="show"></pokemon-list>
       
+      <pokemon-popup @close-popup="closePopup" :pokid="askedId" v-show='showPopup'></pokemon-popup>
     </div>
-
-    <script>
-      /*console.log("inline js")
-      let xhr = new XMLHttpRequest()
-      xhr.onload(function() {
-        console.log(this.responseText)
-      })
-      xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon', true)
-      xhr.send()*/
-    </script>
 
     <!-- Import App -->
     <script src="./main.js"></script>
@@ -34,6 +29,7 @@
     <!-- Import Components -->
     <script src="./components/PokemonList.js"></script>
     <script src="./components/PokemonCard.js"></script>
+    <script src="./components/PokemonPopup.js"></script>
 
     <!-- Mount App -->
     <script>

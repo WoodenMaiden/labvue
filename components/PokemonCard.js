@@ -13,9 +13,19 @@ app.component('pokemon-card',
             <h1>{{ pokemon.name }}</h1>
             <p> #{{ getId }}</p>
         </div>
-        <img class="pokemonimage" :src="getImage"/>
-        <button class="details">View Details</button>
+        <img :src="getImage"/>
+        <button class="details" @click='demandDetails'>View Details</button>
     </div>`,
+    methods: {
+        demandDetails() {
+            let payload = {
+                id: this.getId
+            }
+
+            //console.log(`demande faite pour ${this.getId}`)
+            this.$emit('demand-details', payload)
+        }
+    },
     computed:{
         getId(){
             const splitted = this.pokemon.url.split('/')

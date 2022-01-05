@@ -2,10 +2,9 @@ app.component('pokemon-list',
 {
     template:
     /*html*/
-    `
-    <ul class="pokelist">
+    `<ul class="pokelist" >
         <li v-for="p in pokemonArray" :key="p.id">
-            <pokemon-card :pokemon="p"></pokemon-card> 
+            <pokemon-card @demand-details="detailsToApp" :pokemon="p"></pokemon-card> 
         </li>
     </ul>
     `,
@@ -21,6 +20,10 @@ app.component('pokemon-list',
             return fetch(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${this.offset}`).then(function(data){
                 return data.json()
             })
+        },
+        detailsToApp(payload) {
+            //console.log("passé par la liste")
+            this.$emit('details-to-app', payload)
         }
     },
     mounted() {
