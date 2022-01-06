@@ -7,7 +7,6 @@ app.component('pokemon-popup',
             close
         </span>
         <h1>{{ this.pokdata.name }}</h1>
-        <h2>Le pokémon XXX</h2>
         <p>#{{ this.pokid }}</p>
         
         <img class="image" :src="this.image"/>
