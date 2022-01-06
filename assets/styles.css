@@ -17,12 +17,15 @@ nav {
     margin-bottom: 25px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
     
+    position: fixed;
+    width: 100%;
     display: flex;
     align-items: center;
     gap: 30px;
 }
 
 .pokelist {
+    margin-top: 90px; /*nav height + nav margin + 5px*/
     list-style: none;
     display: grid;
     grid-template-columns: repeat(5, 19%);
