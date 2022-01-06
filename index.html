@@ -16,11 +16,15 @@
     <div id="app">
       <nav>
         <h1>POKEDO</h1>
+        <form @submit.prevent="showOnSubmit">
+          <input type="text" name="searchArg" placeholder="Id or name here" v-model="searchArg" required/>
+          <input type="submit" value="search" @submit="showForm"/>
+        </form>
       </nav>
 
-      <pokemon-list @details-to-app="show"></pokemon-list>
+      <pokemon-list v-show="!showPopup" @details-to-app="show"></pokemon-list>
       
-      <pokemon-popup @close-popup="closePopup" :pokid="askedId" v-show='showPopup'></pokemon-popup>
+      <pokemon-popup @close-popup="closePopup" :pokid="askedId" v-if='showPopup'></pokemon-popup>
     </div>
 
     <!-- Import App -->

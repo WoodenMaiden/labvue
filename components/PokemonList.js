@@ -1,7 +1,7 @@
 app.component('pokemon-list',
 {
     template:
-    /*html*/
+    
     `<ul class="pokelist" >
         <li v-for="p in pokemonArray" :key="p.id">
             <pokemon-card @demand-details="detailsToApp" :pokemon="p"></pokemon-card> 
@@ -27,6 +27,8 @@ app.component('pokemon-list',
         }
     },
     mounted() {
+        let that = this
+        
         this.fetchList().then((data) => {
             this.pokemonArray = data.results
         })

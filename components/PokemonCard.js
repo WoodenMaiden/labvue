@@ -11,7 +11,7 @@ app.component('pokemon-card',
     `<div class="card">
         <div class="cardheader">
             <h1>{{ pokemon.name }}</h1>
-            <p> #{{ getId }}</p>
+            <em> #{{ getId }}</em>
         </div>
         <img :src="getImage"/>
         <button class="details" @click='demandDetails'>View Details</button>
@@ -22,7 +22,6 @@ app.component('pokemon-card',
                 id: this.getId
             }
 
-            //console.log(`demande faite pour ${this.getId}`)
             this.$emit('demand-details', payload)
         }
     },

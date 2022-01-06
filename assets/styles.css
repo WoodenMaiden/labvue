@@ -13,13 +13,16 @@ nav {
     height: 60px;
     margin-bottom: 25px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
+    
     display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .pokelist {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(4, 24%);
+    grid-template-columns: repeat(5, 19%);
     grid-gap: 50px 10px;
     align-items: center;
 }
@@ -44,7 +47,7 @@ nav {
     width: 90%;
     height: 90%;
     background-color: white;
-    
+    padding: 10px;    
 
     z-index: 20;
     position: fixed;
@@ -53,4 +56,47 @@ nav {
     /*justify self isn't sufficient in that case*/
     top: 5%;
     bottom: 5%;
+    
 }
+
+.popup li {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.popup .image {
+    display: block;
+
+    height: 30%;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.type {
+    height: 5em;
+}
+
+.material-icons {
+    cursor: pointer;
+    user-select: none;
+}
+
+.listType {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+@media screen and (max-device-width: 1900) {
+   .pokelist { 
+        grid-template-columns: repeat(4, 24%);
+   }
+}
+
+@media screen and (max-device-width: 1000) {
+    .pokelist { 
+         grid-template-columns: repeat(4, 24%);
+    }
+ }
