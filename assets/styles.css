@@ -8,6 +8,9 @@ body {
     flex-direction: column;
 }
 
+h1 {
+    font-size: 2rem;
+}
 nav {
     background: linear-gradient(-90deg, #84cf6a, #2A9D8F);
     height: 60px;
@@ -89,14 +92,14 @@ nav {
     gap: 30px;
 }
 
-@media screen and (max-device-width: 1900) {
-   .pokelist { 
+@media screen and (max-width: 1200px) {
+    .pokelist { 
         grid-template-columns: repeat(4, 24%);
-   }
+    }
 }
 
-@media screen and (max-device-width: 1000) {
+@media screen and (max-width: 510px) {
     .pokelist { 
-         grid-template-columns: repeat(4, 24%);
+        grid-template-columns: repeat(2, 45%);
     }
- }
+}
