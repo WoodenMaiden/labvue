@@ -16,7 +16,7 @@
     <div id="app">
       <nav>
         <h1>POKEDO</h1>
-        <form @submit.prevent="showOnSubmit">
+        <form v-show="!showPopup" @submit.prevent="showOnSubmit">
           <input type="text" name="searchArg" placeholder="Id or name here" v-model="searchArg" required/>
           <input type="submit" value="search" @submit="showForm"/>
         </form>
