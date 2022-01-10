@@ -78,17 +78,17 @@ app.component('pokemon-popup',
         }
     },
     mounted() {
-        let that = this
 
-        this.fetchFlavour().then(function(data){
-            that.flavor = data
+        this.fetchFlavour().then((data) => {
+           // this.flavor = data;
+            this.flavor = data
         })
 
-        this.fetchInfos().then(function(data){
-            that.pokdata = Object.assign(that.pokdata, data)
-            for (let i= 0; i < that.pokdata.types.length; ++i){
-                let toUp = that.pokdata.types[i].type.name.charAt(0).toUpperCase() + that.pokdata.types[i].type.name.slice(1)
-                that.types.push(toUp)   
+        this.fetchInfos().then((data) => {
+            this.pokdata = Object.assign(this.pokdata, data)
+            for (let i= 0; i < this.pokdata.types.length; ++i){
+                let toUp = this.pokdata.types[i].type.name.charAt(0).toUpperCase() + this.pokdata.types[i].type.name.slice(1)
+                this.types.push(toUp)   
             }
         })
 

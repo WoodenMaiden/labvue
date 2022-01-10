@@ -27,16 +27,15 @@ app.component('pokemon-list',
         }
     },
     mounted() {
-        let that = this
         
         this.fetchList().then((data) => {
             this.pokemonArray = data.results
         })
-        window.onscroll = function(e) {
+        window.onscroll = (e) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                that.fetchList().then(function(data) {
+                that.fetchList().then((data) => {
                     for (let i= 0; i < data.results.length; ++i){
-                        that.pokemonArray.push(data.results[i])
+                        this.pokemonArray.push(data.results[i])
                         //TODO (Optionnal) Consider checking if piture is available because some pokemons return a 404
                     }
                 })
