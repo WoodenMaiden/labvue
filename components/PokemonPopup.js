@@ -17,6 +17,16 @@ app.component('pokemon-popup',
             </li>
         </ul>
         <p>"{{ this.flavor }}"</p>
+
+        <h3>Abilities</h3>
+        <ul class="abilities">
+            <li v-for="m in this.pokdata.abilities">
+                <p @mouseover="this.shownAbility = m.ability.url"> {{m.ability.name}}</p>
+            </li>
+        </ul>
+        <div v-if="this.abilityData != null">
+            <p>{{this.abilityData.name}} : {{this.abilityData.text}}</p>
+        </div>
     </div>`,
     data()  {
         return {
@@ -24,6 +34,8 @@ app.component('pokemon-popup',
             flavor: "", 
             image: "",
             types: [],
+            shownAbility: null,
+            abilityData: null,
             typesIcons: {
                 "Bug":"https://upload.wikimedia.org/wikipedia/commons/3/3c/Pok%C3%A9mon_Bug_Type_Icon.svg",
                 "Dark":"https://upload.wikimedia.org/wikipedia/commons/0/09/Pok%C3%A9mon_Dark_Type_Icon.svg",
@@ -75,12 +87,32 @@ app.component('pokemon-popup',
                 })
             })
             
+        },
+        findEnglishAbility(data){
+            let index = 0
+            while(index < data.length) {
+                if(data[index].language.name == "en") return data[index]
+                ++index
+            }
+        }
+    },
+    watch: {
+        shownAbility: function (url) {
+            if (!url) return;
+            else fetch(url).then((data) => {
+                data.json().then((tojson) => {
+                    console.log(tojson)
+                    this.abilityData = {
+                        name: tojson.name,
+                        text: `${this.findEnglishAbility(tojson.effect_entries).effect}`
+                    }
+                })
+            })
         }
     },
     mounted() {
 
         this.fetchFlavour().then((data) => {
-           // this.flavor = data;
             this.flavor = data
         })
 
@@ -94,5 +126,5 @@ app.component('pokemon-popup',
 
         this.image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.pokid}.png` 
     }
-    
+
 })
