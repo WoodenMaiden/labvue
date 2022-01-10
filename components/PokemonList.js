@@ -31,9 +31,11 @@ app.component('pokemon-list',
         this.fetchList().then((data) => {
             this.pokemonArray = data.results
         })
-        window.onscroll = (e) => {
+
+        window.onscroll =  (e) => {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                that.fetchList().then((data) => {
+                this.fetchList().then((data) => {
+                    //console.log(this)
                     for (let i= 0; i < data.results.length; ++i){
                         this.pokemonArray.push(data.results[i])
                         //TODO (Optionnal) Consider checking if piture is available because some pokemons return a 404
